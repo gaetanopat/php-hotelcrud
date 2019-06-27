@@ -1,0 +1,10 @@
+footer{
+  height: $footer_height;
+  text-align: center;
+  background-color: #33475b;
+  small{
+    line-height: $footer_height;
+    color: #cbd6e2;
+    font-weight: bold;
+  }
+}

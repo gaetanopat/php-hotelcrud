@@ -1,0 +1,25 @@
+header{
+  height: $header_height;
+  background-color: #f5f8fa;
+  .header-left, .header-right{
+    height: $header_height;
+    float: left;
+    width: 50%;
+  }
+  .header-left img{
+    width: 100px;
+    height: 60px;
+  }
+  .header-right{
+    text-align: right;
+    ul li{
+      display: inline-block;
+      line-height: $header_height;
+      padding: 0 20px;
+      a{
+        text-decoration: none;
+        color: #33475b;
+      }
+    }
+  }
+}

@@ -1,3 +1,17 @@
+<?php
+  include 'db_config.php';
+  // Connect
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn && $conn->connect_error) {
+    echo ("Connection failed: " . $conn->connect_error);
+    exit();
+  }
+
+  $sql = "SELECT * FROM stanze";
+  $result = $conn->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,44 +20,46 @@
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <title></title>
   </head>
+  <?php include 'layout/header.php'; ?>
   <body>
-    <h1>Visualizzazione Numero stanza e Piano</h1>
-    <?php
-      $servername = "localhost";
-      $username = "root";
-      $password = "root";
-      $dbname = "hotel_db";
-      // Connect
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      // Check connection
-      if ($conn && $conn->connect_error) {
-      echo ("Connection failed: " . $conn->connect_error);
-      }
-
-      $sql = "SELECT room_number, floor FROM stanze";
-      $result = $conn->query($sql);
-      if ($result && $result->num_rows > 0) { ?>
-        <table>
-          <tr>
-            <th>Numero stanza</th>
-            <th>Piano</th>
-          </tr>
-      <?php // output data of each row
-        while($row = $result->fetch_assoc()) { ?>
-          <tr>
-            <td><?php echo $row['room_number'] ?></td>
-            <td><?php echo $row['floor']; ?></td>
-          </tr>
-      <?php } ?>
-        </table>
+  <section class="show_all_rooms">
+    <div class="container">
+      <h3>Visualizzazione stanze hotel</h3>
       <?php
-      } elseif ($result) {
-        echo "0 results";
-      } else {
-        echo "query error";
-      }
+        if ($result && $result->num_rows > 0) { ?>
+          <table>
+            <tr>
+              <th class="text-center">ID stanza</th>
+              <th class="text-center">Numero stanza</th>
+              <th class="text-center">Piano</th>
+              <th class="text-center">Numero letti</th>
+              <th class="text-center">Creata il</th>
+              <th class="text-center">Aggiornata il</th>
+              <th class="text-center">Actions</th>
+            </tr>
+        <?php // output data of each row
+          while($row = $result->fetch_assoc()) { ?>
+            <tr>
+              <td class="text-center"><strong><?php echo $row['id'] ?></strong></td>
+              <td class="text-center"><?php echo $row['room_number'] ?></td>
+              <td class="text-center"><?php echo $row['floor']; ?></td>
+              <td class="text-center"><?php echo $row['beds']; ?></td>
+              <td class="text-center"><?php echo $row['created_at']; ?></td>
+              <td class="text-center"><?php echo $row['updated_at']; ?></td>
+              <td class="text-center"><a href="actions/show.php?id=<?php echo $row['id'] ?>">Visualizza</a> - <a href="actions/edit.php?id=<?php echo $row['id'] ?>">Modifica</a></td>
+            </tr>
+        <?php } ?>
+          </table>
+        <?php
+        } elseif ($result) {
+          echo "0 results";
+        } else {
+          echo "query error";
+        }
 
-      $conn->close();
-    ?>
-  </body>
-</html>
+        $conn->close();
+      ?>
+    </div>
+  </section>
+
+<?php include 'layout/footer.php' ?>
