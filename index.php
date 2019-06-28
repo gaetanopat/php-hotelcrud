@@ -12,6 +12,7 @@
   $result = $conn->query($sql);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
