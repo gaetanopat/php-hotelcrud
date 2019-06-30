@@ -76,17 +76,17 @@
           $result = $conn->query($sql); ?>
           <h2>Modifica avvenuta con successo </h2>
     <?php
-      } else {
-        // se sbaglia a inserire dati
-        echo '<h2>Hai sbagliato l\'inserimento, riprova</h2>'; ?>
-        <a class="mt-3 mb-3" href="edit.php?id=<?php echo $id_stanza ?>" class="card-link">Rimodifica</a>
+        } else {
+          // se sbaglia a inserire dati
+          echo '<h2>Hai sbagliato l\'inserimento, riprova</h2>'; ?>
+          <a class="mt-3 mb-3" href="edit.php?id=<?php echo $id_stanza ?>" class="card-link">Rimodifica</a>
     <?php
+        }
+      } else {
+        // se l'utente nell'inserimento ha inserito un piano diverso da quello iniziale
+        // e quello inserito è pieno (quindi ha già 6 stanze per piano)
+        echo '<h2>Il piano '.$floor.' è già pieno, riprova</h2>';
       }
-    } else {
-      // se l'utente nell'inserimento ha inserito un piano diverso da quello iniziale
-      // e quello inserito è pieno (quindi ha già 6 stanze per piano)
-      echo '<h2>Il piano '.$floor.' è già pieno, riprova</h2>';
-    }
     } else {
       // se inserisce un numero di stanza che già esiste
       echo '<h2>Hai inserito una stanza già esistente, riprova</h2>'; ?>
