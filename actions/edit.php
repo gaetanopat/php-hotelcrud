@@ -21,13 +21,15 @@
 <section class="show_single_room">
   <div class="container">
     <?php
-      if($result && $result->num_rows > 0){
-        while($row = $result->fetch_assoc()) {
+    if($result && $result->num_rows > 0){
+      while($row = $result->fetch_assoc()) {
     ?>
     <h4>Modifica stanza numero: <?php echo $row['room_number'] ?> (ID: <?php echo $row['id'] ?>)</h4>
 
     <form action="edit_room.php" method="post">
       <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+      <input type="hidden" value="<?php echo $row['room_number'] ?>" name="stanza_iniziale">
+      <input type="hidden" value="<?php echo $row['floor'] ?>" name="floor_iniziale">
       <div class="form-group row">
         <label class="col-5 col-form-label">Numero stanza: </label>
         <div class="col-7">
@@ -51,12 +53,14 @@
         <a href="../index.php" class="btn btn-primary">Torna alla Home</a>
       </div>
     </form>
-    <?php }
-      } elseif ($result) {
-        echo "0 results";
-      } else {
-        echo "query error";
+    <?php
       }
+    } elseif ($result) {
+      echo "0 results";
+    } else {
+      echo "query error";
+    }
+    $conn->close();
     ?>
   </div>
 </section>

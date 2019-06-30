@@ -21,8 +21,8 @@
 <section class="show_single_room">
   <div class="container">
     <?php
-      if($result && $result->num_rows > 0){
-        while($row = $result->fetch_assoc()) {
+    if($result && $result->num_rows > 0){
+      while($row = $result->fetch_assoc()) {
     ?>
     <div class="card" style="width: 19rem;">
       <div class="card-body">
@@ -40,12 +40,14 @@
         <a href="../index.php" class="card-link">Torna alla Home</a>
       </div>
     </div>
-    <?php }
-      } elseif ($result) {
-        echo "0 results";
-      } else {
-        echo "query error";
+    <?php 
       }
+    } elseif ($result) {
+      echo "0 results";
+    } else {
+      echo "query error";
+    }
+    $conn->close();
     ?>
   </div>
 </section>

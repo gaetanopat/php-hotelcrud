@@ -5,7 +5,22 @@ section.show_all_rooms{
     margin: 20px 0;
     text-align: center;
   }
-
+  a.btn-primary{
+    margin: 20px 0;
+  }
+  .form_delete{
+    display: inline;
+    input[type="submit"]{
+      color: #007bff;
+      text-decoration: none;
+      background-color: transparent;
+      border: none;
+      &:hover{
+        color: #0056b3;
+        text-decoration: underline;
+      }
+    }
+  }
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -25,7 +40,7 @@ section.show_all_rooms{
   }
 }
 
-// per la sezione che mi visualizza la singola stanza selezionata
+// per tutte le altre sezioni, visualizzazione, modifica, cancellazione
 section.show_single_room{
   height: calc(100vh - #{$header_height} - #{$footer_height});
   .container{

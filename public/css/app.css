@@ -11156,6 +11156,26 @@ section.show_all_rooms h3 {
   text-align: center;
 }
 
+section.show_all_rooms a.btn-primary {
+  margin: 20px 0;
+}
+
+section.show_all_rooms .form_delete {
+  display: inline;
+}
+
+section.show_all_rooms .form_delete input[type=submit] {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+section.show_all_rooms .form_delete input[type=submit]:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 section.show_all_rooms table {
   font-family: arial, sans-serif;
   border-collapse: collapse;

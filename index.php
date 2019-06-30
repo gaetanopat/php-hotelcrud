@@ -25,7 +25,8 @@
   <body>
   <section class="show_all_rooms">
     <div class="container">
-      <h3>Visualizzazione stanze hotel</h3>
+      <h3 class="float-left">Visualizzazione stanze hotel</h3>
+      <a href="actions/create.php" class="btn btn-primary float-right">Crea nuova stanza</a>
       <?php
         if ($result && $result->num_rows > 0) { ?>
           <table>
@@ -47,7 +48,12 @@
               <td class="text-center"><?php echo $row['beds']; ?></td>
               <td class="text-center"><?php echo $row['created_at']; ?></td>
               <td class="text-center"><?php echo $row['updated_at']; ?></td>
-              <td class="text-center"><a href="actions/show.php?id=<?php echo $row['id'] ?>">Visualizza</a> - <a href="actions/edit.php?id=<?php echo $row['id'] ?>">Modifica</a></td>
+              <td class="text-center"><a href="actions/show.php?id=<?php echo $row['id'] ?>">Visualizza</a> - <a href="actions/edit.php?id=<?php echo $row['id'] ?>">Modifica</a> -
+                <form class="form_delete" action="actions/delete.php" method="post">
+                  <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                  <input type="submit" name="" value="Cancella">
+                </form>
+              </td>
             </tr>
         <?php } ?>
           </table>
